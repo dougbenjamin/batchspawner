@@ -23,6 +23,7 @@ import re
 import grp
 
 import tempfile
+import traceback
 
 import xml.etree.ElementTree as ET
 
@@ -197,12 +198,15 @@ class BatchSpawnerBase(Spawner):
 
     # Prepare substitution variables for templates using req_xyz traits
     def get_req_subvars(self):
+        self.log.debug(f'get_req_subvars {traceback.format_stack()}')
+        self.log.debug(f'self.trait_names = {self.trait_names()}')
         reqlist = [t for t in self.trait_names() if t.startswith("req_")]
         subvars = {}
         for t in reqlist:
             subvars[t[4:]] = getattr(self, t)
         if subvars.get("keepvars_extra"):
             subvars["keepvars"] += "," + subvars["keepvars_extra"]
+        self.log.debug(f'get_req_subvars - Return - subvars = {subvars}')
         return subvars
 
     batch_submit_cmd = Unicode(
