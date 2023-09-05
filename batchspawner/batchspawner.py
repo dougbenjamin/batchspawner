@@ -202,6 +202,7 @@ class BatchSpawnerBase(Spawner):
           self.log.debug(f'get_req_subvars {line.strip()}')
         self.log.debug(f'self.trait_names = {self.trait_names()}')
         reqlist = [t for t in self.trait_names() if t.startswith("req_")]
+        self.log.debug(f'reqList - {reqlist}')
         subvars = {}
         for t in reqlist:
             subvars[t[4:]] = getattr(self, t)
@@ -887,6 +888,11 @@ GetEnv = True
 transfer_executable = False
 transfer_input_files = {apikeyfile_dir}/{apikey_file}
 should_transfer_files = YES
+Request_Memory = {memory}
+Request_Cpus = {nprocs}
+request_GPUs = {ngpus}
++want_gpus = {want_gpus}
+PeriodicRemove = (JobStatus == 1 && NumJobStarts > 1) || JobStatus == 5)
 {options}
 Queue
 """
