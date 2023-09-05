@@ -121,6 +121,11 @@ class BatchSpawnerBase(Spawner):
         help="Number of GPUs to request from resource manager",
     ).tag(config=True)
 
+    req_want_gpus = Unicode(
+        "",
+        help="Flag - to request gpu nodes from resource manager",
+    ).tag(config=True)
+
     req_runtime = Unicode(
         "",
         help="Length of time for submitted job to run",
