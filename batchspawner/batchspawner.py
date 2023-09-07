@@ -203,8 +203,8 @@ class BatchSpawnerBase(Spawner):
 
     # Prepare substitution variables for templates using req_xyz traits
     def get_req_subvars(self):
-        for line in traceback.format_stack():
-          self.log.debug(f'get_req_subvars {line.strip()}')
+        #for line in traceback.format_stack():
+        #  self.log.debug(f'get_req_subvars {line.strip()}')
         self.log.debug(f'self.trait_names = {self.trait_names()}')
         reqlist = [t for t in self.trait_names() if t.startswith("req_")]
         self.log.debug(f'reqList - {reqlist}')
