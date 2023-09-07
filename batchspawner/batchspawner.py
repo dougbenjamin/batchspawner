@@ -205,9 +205,9 @@ class BatchSpawnerBase(Spawner):
     def get_req_subvars(self):
         #for line in traceback.format_stack():
         #  self.log.debug(f'get_req_subvars {line.strip()}')
-        self.log.debug(f'self.trait_names = {self.trait_names()}')
+        #self.log.debug(f'self.trait_names = {self.trait_names()}')
         reqlist = [t for t in self.trait_names() if t.startswith("req_")]
-        self.log.debug(f'reqList - {reqlist}')
+        #self.log.debug(f'reqList - {reqlist}')
         subvars = {}
         for t in reqlist:
             subvars[t[4:]] = getattr(self, t)
